@@ -6,7 +6,7 @@ messages = []
 @app.route("/send", methods=["POST"])
 def send():
     data = request.json
-    messages.append(data["msg"])
+    messages.append(data)
     return {"status": "sent"}
 
 @app.route("/receive", methods=["GET"])
