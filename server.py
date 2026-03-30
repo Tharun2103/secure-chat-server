@@ -1,16 +1,15 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS   # 👈 ADD THIS
 
 app = Flask(__name__)
+CORS(app)   # 👈 ADD THIS
 
 messages = []
 
 @app.route("/send", methods=["POST"])
 def send():
     data = request.json
-
-    # 🔥 store full message (msg + sender + id)
     messages.append(data)
-
     return {"status": "sent"}
 
 @app.route("/receive", methods=["GET"])
